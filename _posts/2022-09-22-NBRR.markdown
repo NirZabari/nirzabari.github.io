@@ -2,13 +2,14 @@
 layout: post
 title:  "Learning to Ride a Buy-Cycle: A Hyper-Convolutional Model for Next Basket Repurchase Recommendation"
 date:   2022-09-22 22:21:59 +00:00
-image: /images/diffcolor4.png
+image: /images/NBRR.png
 categories: research
 author: "Nir Zabari"
 authors: "Ori Katz, Oren Barkan, <strong>Nir Zabari</strong>, Noam Koenigstein"
 venue: "RecSys"
+paper: https://dl.acm.org/doi/abs/10.1145/3523227.3546763
 arxiv: 
 code:
-website: https://dl.acm.org/doi/10.1145/3523227.3546763
+website: 
+youtube: https://www.youtube.com/watch?v=1T-a0ql6e7s&ab_channel=ACMRecSys
 ---
-Fill here

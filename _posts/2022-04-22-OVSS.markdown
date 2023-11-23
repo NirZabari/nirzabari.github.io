@@ -2,13 +2,13 @@
 layout: post
 title:  "Open-Vocabulary Semantic Segmentation Using Test-Time Distillation"
 date:   2022-09-22 22:21:59 +00:00
-image: /images/diffcolor4.png
+image: /images/OVSS.png
 categories: research
 author: "Nir Zabari"
 authors: "<strong>Nir Zabari</strong>, Yedid Hoshen"
 venue: "ECCV L2ID Workshop"
+paper: https://link.springer.com/chapter/10.1007/978-3-031-25063-7_4
 arxiv: 
 code:
-website: https://link.springer.com/chapter/10.1007/978-3-031-25063-7_4
+website: 
 ---
-Fill here

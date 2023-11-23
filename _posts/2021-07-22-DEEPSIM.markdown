@@ -2,13 +2,13 @@
 layout: post
 title:  "DeepSIM: Image Shape Manipulation from a Single Augmented Training Sample"
 date:   2021-07-22 22:21:59 +00:00
-image: /images/diffcolor4.png
+image: /images/diffsim.png
 categories: research
 author: "Nir Zabari"
 authors: "Yael Vinker*, Eliahu Horwitz*, <strong>Nir Zabari</strong>, Yedid Hoshen"
 venue: "ICCV (Oral)"
+paper: https://arxiv.org/abs/2007.01289
 arxiv: 
-code:
+code: https://github.com/eliahuhorwitz/DeepSIM
 website: https://vision.huji.ac.il/deepsim/
 ---
-Fill here
