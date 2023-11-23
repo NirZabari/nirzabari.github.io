@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Automated Evaluation of Human Embryo Blastulation and Implantation Potential using Deep‐Learning"
+date:   2021-07-22 22:21:59 +00:00
+image: /images/diffcolor4.png
+categories: research
+author: "Nir Zabari"
+authors: "Yoav Kan-Tor, <strong> Nir Zabari</strong>, Ity Erlich, Adi Szeskin, Tamar Amitai, Dganit Richter, Yuval Or, Zeev Shoham, Arye Hurwitz, Iris Har-Vardi, Matan Gavish, Assaf Ben-Meir, Amnon Buxboim"
+venue: "Advanced Intelligent Systems"
+arxiv: 
+code:
+website: https://onlinelibrary.wiley.com/doi/10.1002/aisy.202000080
+---
+Fill here
