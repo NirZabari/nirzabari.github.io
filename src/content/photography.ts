@@ -4,6 +4,12 @@ export interface Photo {
   title: string;
 }
 
+export const photographyContent = {
+  title: "Photography",
+  description:
+    "Photography is one of my way of expressing myself. I enjoy freezing moments in time and sharing them with others. My current gear is Canon R10. Hope you'll enjoy this collection!",
+} as const;
+
 // Seeded random number generator
 function mulberry32(a: number) {
   return function () {
