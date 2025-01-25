@@ -35,6 +35,6 @@ export const heroContent = {
   image: {
     src: "/images/portraits/portrait_nir.png",
     src_hover: "/images/portraits/portrait_nir_lora.png",
-    alt: "Professional portrait of Nir Zabari wearing a dark suit against a neutral background",
+    alt: "A portrait of Nir Zabari",
   },
 } as const;
