@@ -67,14 +67,24 @@ export const Hero: React.FC = () => {
                 <img
                   src={heroContent.image.src}
                   alt={heroContent.image.alt}
-                  className={`absolute w-full h-full object-cover transition-opacity duration-500 ${
+                  width={400}
+                  height={400}
+                  decoding="sync"
+                  fetchPriority="high"
+                  className={`absolute w-full h-full object-cover will-change-transform ${
                     isHovered ? "opacity-0" : "opacity-100"
                   }`}
+                  style={{ contentVisibility: "auto" }}
                 />
                 <img
                   src={heroContent.image.src_hover}
                   alt={heroContent.image.alt}
-                  className={`absolute w-full h-full object-cover transition-opacity duration-500 ${
+                  width={400}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                  className={`absolute w-full h-full object-cover will-change-transform ${
                     isHovered ? "opacity-100" : "opacity-0"
                   }`}
                 />

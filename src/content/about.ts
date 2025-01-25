@@ -38,7 +38,7 @@ export const aboutContent = {
       icon: "crown",
       title: "Chess",
       description:
-        "I was trained by a GM, and achieved a peak blitz rating of 1700 within a year. Let's play!",
+        "I was trained by a GM and achieved a peak blitz rating of 1700 within a year. Let's play!",
       image: "/images/about/chess_2.jpg",
     },
     {
