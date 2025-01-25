@@ -33,8 +33,8 @@ export const heroContent = {
     },
   ],
   image: {
-    src: "/src/content/images/portrait_nir.png",
-    src_hover: "/src/content/images/portrait_nir_lora.png",
+    src: "/images/portraits/portrait_nir.png",
+    src_hover: "/images/portraits/portrait_nir_lora.png",
     alt: "Professional portrait of Nir Zabari wearing a dark suit against a neutral background",
   },
 } as const;
