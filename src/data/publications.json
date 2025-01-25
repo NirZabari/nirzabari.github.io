@@ -1,0 +1,70 @@
+{
+  "publications": [
+    {
+      "id": "7",
+      "title": "LTX-Video: Real-Time Video Latent Diffusion",
+      "summary": "LTX-Video is a transformer-based latent diffusion model for real-time video generation, producing 5 seconds of 24 fps video at 768x512 resolution in 2 seconds on an Nvidia H100 GPU.",
+      "authors": "Yoav HaCohen, Nisan Chiprut, Benny Brazowski, Daniel Shalem, Dudu Moshe, Eitan Richardson, Eran Levin, Guy Shiran, **Nir Zabari**, Ori Gordon, Poriya Panet, Sapir Weissbuch, Victor Kulikov, Yaki Bitterman, Zeev Melumian, Ofir Bibi",
+      "venue": "arXiv",
+      "image": "/images/research/LTXVideo.jpg",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2501.00103"
+    },
+    {
+      "id": "6",
+      "title": "Diffusing Colors: Image Colorization with Text-Guided Diffusion",
+      "summary": "A text guided diffusion model for image colorization, trained with cold-diffusion in SD latent space.",
+      "authors": "**Nir Zabari**, Aharon Azulay, Alexey Gorkor, Tavi Halperin, Ohad Fried",
+      "venue": "SIGGRAPH Asia",
+      "image": "/images/research/diffcolor1.jpg",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2312.04145",
+      "tags": ["Image Colorization", "Diffusion Models", "Text-to-Image"]
+    },
+    {
+      "id": "5",
+      "title": "Delineating the Heterogeneity of Embryo Preimplantation Development Using Automated and Accurate Morphokinetic Annotation",
+      "summary": "Utilizes automated morphokinetic annotation to study the heterogeneity in embryo preimplantation development.",
+      "authors": "**Nir Zabari**, Yoav Kan-Tor, Yuval Or, Zeev Shoham, Yoel Shufaro, Dganit Richter, Iris Har-Vardi, Assaf Ben-Meir, Naama Srebnik, Amnon Buxboim",
+      "venue": "Journal of Assisted Reproduction and Genetics",
+      "image": "/images/research/aa1.jpg",
+      "year": 2023,
+      "url": "https://link.springer.com/article/10.1007/s10815-023-02806-y",
+      "tags": ["Medical AI", "Embryo Development", "Deep Learning"]
+    },
+    {
+      "id": "3",
+      "title": "Open-Vocabulary Semantic Segmentation Using Test-Time Distillation",
+      "summary": "Introduces a novel method for semantic segmentation that generalizes to unseen object categories.",
+      "authors": "**Nir Zabari**, Yedid Hoshen",
+      "venue": "ECCV L2ID Workshop",
+      "image": "/images/research/OVSS.jpg",
+      "year": 2022,
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-25063-7_4",
+      "tags": ["Semantic Segmentation", "Deep Learning", "Computer Vision"]
+    },
+    {
+      "id": "4",
+      "title": "Learning to Ride a Buy-Cycle: A Hyper-Convolutional Model for Next Basket Repurchase Recommendation",
+      "summary": "Presents a hyper-convolutional model for predicting next basket repurchase recommendations.",
+      "authors": "Ori Katz, Oren Barkan, **Nir Zabari**, Noam Koenigstein",
+      "venue": "RecSys",
+      "image": "/images/research/NBRR.jpg",
+      "year": 2022,
+      "url": "https://dl.acm.org/doi/abs/10.1145/3523227.3546763",
+      "youtube": "https://www.youtube.com/watch?v=1T-a0ql6e7s&ab_channel=ACMRecSys",
+      "tags": ["Recommendation Systems", "Machine Learning"]
+    },
+    {
+      "id": "1",
+      "title": "Automated Evaluation of Human Embryo Blastulation and Implantation Potential Using Deep‐Learning",
+      "summary": "A deep learning approach to evaluate embryo blastulation and implantation potential, utilizing accurate morphological analysis.",
+      "authors": "Yoav Kan-Tor, **Nir Zabari**, Ity Erlich, Adi Szeskin, Tamar Amitai, Dganit Richter, Yuval Or, Zeev Shoham, Arye Hurwitz, Iris Har-Vardi, Matan Gavish, Assaf Ben-Meir, Amnon Buxboim",
+      "venue": "Advanced Intelligent Systems",
+      "image": "/images/research/EMBDL.jpg",
+      "year": 2021,
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/aisy.202000080",
+      "tags": ["Deep Learning", "Medical AI", "Embryo Evaluation"]
+    }
+  ]
+}

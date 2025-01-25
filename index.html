@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Prevent Flash of Unstyled Content -->
+    <style>
+      html {
+        visibility: visible;
+        opacity: 1;
+      }
+      html.dark {
+        background-color: #0f172a;
+        color: #fff;
+      }
+      html.light {
+        background-color: #ffffff;
+        color: #0f172a;
+      }
+      html.dark body {
+        background-color: #0f172a;
+      }
+      html.light body {
+        background-color: #ffffff;
+      }
+      #root {
+        opacity: 0;
+        will-change: opacity;
+        animation: fadeIn 0.3s ease-in forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0f172a;
+      }
+      .initial-loader::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 3px solid #1e293b;
+        border-top-color: #38bdf8;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Primary Meta Tags -->
+    <title>Nir Zabari</title>
+    <meta
+      name="description"
+      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+    />
+    <meta name="author" content="Nir Zabari" />
+    <meta
+      name="keywords"
+      content="Nir Zabari,computer vision, machine learning, AI research, generative models, Lightricks, Microsoft, Mobileye, Hebrew University"
+    />
+
+    <!-- Robots and Indexing -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nirzabari.github.io/" />
+    <meta
+      property="og:title"
+      content="Nir Zabari | Researcher & Computer Vision Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+    />
+    <meta property="og:image" content="/images/portrait_nir.png" />
+    <meta property="og:site_name" content="Nir Zabari" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nirzabari.github.io/" />
+    <meta
+      property="twitter:title"
+      content="Nir Zabari | Researcher & Computer Vision Engineer"
+    />
+    <meta
+      property="twitter:description"
+      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+    />
+    <meta property="twitter:image" content="/images/portrait_nir.png" />
+
+    <!-- Mobile/Apple Specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Nir Zabari" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nirzabari.github.io/" />
+
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Security -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' https: data:;
+        font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
+        connect-src 'self' https:;
+        media-src 'self';
+        object-src 'none';
+        frame-src 'self';
+        worker-src 'self' blob:;
+        form-action 'self';
+        base-uri 'self';
+        manifest-src 'self';"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=()"
+    />
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://nirzabari.github.io/" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://nirzabari.github.io/"
+    />
+
+    <!-- Accessibility -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0f172a"
+    />
+
+    <script type="module" src="./src/main.tsx"></script>
+  </head>
+  <body role="document">
+    <div
+      class="initial-loader"
+      role="progressbar"
+      aria-label="Loading..."
+    ></div>
+    <div id="root" role="main"></div>
+    <script>
+      // Remove loader when content is ready
+      window.addEventListener("load", () => {
+        const loader = document.querySelector(".initial-loader");
+        if (loader) {
+          loader.setAttribute("aria-hidden", "true");
+          loader.remove();
+        }
+      });
+
+      // Handle color scheme changes
+      if (window.matchMedia) {
+        const colorSchemeQuery = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        );
+        const html = document.documentElement;
+
+        const updateTheme = (e) => {
+          if (e.matches) {
+            html.classList.remove("light");
+            html.classList.add("dark");
+          } else {
+            html.classList.remove("dark");
+            html.classList.add("light");
+          }
+        };
+
+        colorSchemeQuery.addListener(updateTheme);
+        updateTheme(colorSchemeQuery);
+      }
+    </script>
+  </body>
+</html>

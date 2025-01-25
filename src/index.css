@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... (keep existing font imports) */
+
+@layer base {
+  html {
+    font-family: "SF Pro Display", system-ui, sans-serif;
+    @apply overflow-y-scroll;
+  }
+
+  body {
+    @apply antialiased bg-background-light dark:bg-[#0F0A1F] text-gray-900 dark:text-gray-100 min-w-[320px];
+  }
+
+  /* Smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* ... (keep existing animations and scrollbar styles) */
+
+/* Custom gradient backgrounds */
+.gradient-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 212, 253, 0.15) 0%,
+    rgba(91, 134, 229, 0.15) 50%,
+    rgba(130, 87, 229, 0.25) 100%
+  );
+}
+
+.dark .gradient-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(45, 212, 253, 0.25) 0%,
+    rgba(91, 134, 229, 0.25) 50%,
+    rgba(130, 87, 229, 0.35) 100%
+  );
+}
+
+/* Wave animation for text */
+@keyframes wave {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-12px) rotate(0deg);
+  }
+  60% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.wavy-text span {
+  display: inline-block;
+  animation-fill-mode: both;
+}
+
+.wavy-text:hover span {
+  animation: wave 0.5s ease-in-out;
+}
+
+/* Container max-width override */
+@layer utilities {
+  .container {
+    @apply max-w-[2000px];
+  }
+
+  /* Custom text colors */
+  .text-primary {
+    @apply text-violet-600 dark:text-violet-400;
+  }
+
+  /* Custom hover effects */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply scale-105 brightness-110;
+  }
+}
