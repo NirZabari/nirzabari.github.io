@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
-} from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from './context/ThemeContext';
-import { Navigation } from './components/Navigation';
-import { Home } from './pages/Home';
-import { ResearchPage } from './pages/ResearchPage';
-import { PhotographyPage } from './pages/PhotographyPage';
-import { AboutPage } from './pages/AboutPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { Footer } from './components/Footer';
-import { initGA } from './utils/analytics';
-import { Analytics } from './components/Analytics';
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Navigation } from "./components/Navigation";
+import { Home } from "./pages/Home";
+import { ResearchPage } from "./pages/ResearchPage";
+import { PhotographyPage } from "./pages/PhotographyPage";
+import { AboutPage } from "./pages/AboutPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { Footer } from "./components/Footer";
+import { initGA } from "./utils/analytics";
+import { Analytics } from "./components/Analytics";
 
-const GA_MEASUREMENT_ID = 'G-4C2X5CP9YV';
+const GA_MEASUREMENT_ID = "G-0LCS2R8D7M";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
