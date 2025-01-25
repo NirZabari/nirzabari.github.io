@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getPhotos, Photo, photographyContent } from "../content/photography";
 
 // You can change this seed to get different photo orders
-const PHOTO_SEED = 13;
+const PHOTO_SEED = 6333;
 
 const PhotoGrid: React.FC<{
   photos: Photo[];
