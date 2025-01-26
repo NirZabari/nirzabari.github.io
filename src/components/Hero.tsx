@@ -32,19 +32,13 @@ const WavyText: React.FC<{ text: string }> = ({ text }) => {
 
 export const Hero: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [hasCompletedHoverCycle, setHasCompletedHoverCycle] = useState(false);
 
   const handleMouseEnter = () => {
-    if (!hasCompletedHoverCycle) {
-      setIsHovered(true);
-    }
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    if (!hasCompletedHoverCycle) {
-      setIsHovered(false);
-      setHasCompletedHoverCycle(true);
-    }
+    setIsHovered(false);
   };
 
   return (
@@ -71,7 +65,7 @@ export const Hero: React.FC = () => {
                   height={400}
                   decoding="sync"
                   fetchPriority="high"
-                  className={`absolute w-full h-full object-cover will-change-transform ${
+                  className={`absolute w-full h-full object-cover will-change-transform transition-opacity duration-300 ${
                     isHovered ? "opacity-0" : "opacity-100"
                   }`}
                   style={{ contentVisibility: "auto" }}
@@ -84,7 +78,7 @@ export const Hero: React.FC = () => {
                   loading="lazy"
                   decoding="async"
                   fetchPriority="low"
-                  className={`absolute w-full h-full object-cover will-change-transform ${
+                  className={`absolute w-full h-full object-cover will-change-transform transition-opacity duration-300 ${
                     isHovered ? "opacity-100" : "opacity-0"
                   }`}
                 />
