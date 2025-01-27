@@ -2,7 +2,7 @@ export const heroContent = {
   greeting: "Hi! I'm Nir.",
   title: "",
   description: [
-    "I am a Computer Vision Researcher at Lightricks, specializing in generative AI and creative technologies. My work focuses on designing innovative tools and algorithms that enhance widely used creative applications. Prior to Lightricks, I was a Data Scientist at Microsoft, where I worked on recommendation systems and vision-based similarity. Before that, at Mobileye, I worked on advancing semantic segmentation and text-based image retrieval.",
+    "I am a Computer Vision Researcher at Lightricks, specializing in generative AI and creative technologies. My work focuses on designing innovative tools and algorithms that enhance widely used creative applications. Prior to Lightricks, I was a Data Scientist at Microsoft, where I worked on recommendation systems and vision-based similarity. Prior to that, I worked at Mobileye, advancing semantic segmentation and text-based image retrieval.",
     "I hold an M.Sc. in Computer Science (cum laude) from the Hebrew University of Jerusalem, where my research focused on deep learning for embryo implantation assessment and open vocabulary semantic segmentation.",
   ],
   socialLinks: [
