@@ -13,7 +13,7 @@ import { ResearchPage } from "./pages/ResearchPage";
 import { PhotographyPage } from "./pages/PhotographyPage";
 import { AboutPage } from "./pages/AboutPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { initGA, trackPageView } from "./utils/analytics";
+import ReactGA from "react-ga4";
 import { Analytics } from "./components/Analytics";
 
 const GA_MEASUREMENT_ID = "G-TJFXRCV9CW";
@@ -22,7 +22,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   React.useEffect(() => {
-    trackPageView(location.pathname);
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
   }, [location]);
 
   return (
@@ -40,9 +40,7 @@ const AnimatedRoutes = () => {
 
 export default function App() {
   React.useEffect(() => {
-    initGA(GA_MEASUREMENT_ID).catch((error) => {
-      console.error("Failed to initialize Google Analytics:", error);
-    });
+    ReactGA.initialize(GA_MEASUREMENT_ID);
   }, []);
 
   return (
