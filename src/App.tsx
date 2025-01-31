@@ -17,7 +17,7 @@ import { Footer } from "./components/Footer";
 import { initGA } from "./utils/analytics";
 import { Analytics } from "./components/Analytics";
 
-const GA_MEASUREMENT_ID = "G-9PY6R7HB79";
+const GA_MEASUREMENT_ID = "G-TJFXRCV9CW";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
