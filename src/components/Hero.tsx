@@ -64,7 +64,6 @@ export const Hero: React.FC = () => {
                   width={400}
                   height={400}
                   decoding="sync"
-                  fetchPriority="high"
                   className={`absolute w-full h-full object-cover will-change-transform transition-opacity duration-300 ${
                     isHovered ? "opacity-0" : "opacity-100"
                   }`}
@@ -77,7 +76,6 @@ export const Hero: React.FC = () => {
                   height={400}
                   loading="lazy"
                   decoding="async"
-                  fetchPriority="low"
                   className={`absolute w-full h-full object-cover will-change-transform transition-opacity duration-300 ${
                     isHovered ? "opacity-100" : "opacity-0"
                   }`}

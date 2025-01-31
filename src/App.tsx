@@ -13,14 +13,17 @@ import { ResearchPage } from "./pages/ResearchPage";
 import { PhotographyPage } from "./pages/PhotographyPage";
 import { AboutPage } from "./pages/AboutPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { Footer } from "./components/Footer";
-import { initGA } from "./utils/analytics";
+import { initGA, trackPageView } from "./utils/analytics";
 import { Analytics } from "./components/Analytics";
 
 const GA_MEASUREMENT_ID = "G-TJFXRCV9CW";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  React.useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location]);
 
   return (
     <AnimatePresence mode="wait">
@@ -37,7 +40,9 @@ const AnimatedRoutes = () => {
 
 export default function App() {
   React.useEffect(() => {
-    initGA(GA_MEASUREMENT_ID);
+    initGA(GA_MEASUREMENT_ID).catch((error) => {
+      console.error("Failed to initialize Google Analytics:", error);
+    });
   }, []);
 
   return (
@@ -49,7 +54,6 @@ export default function App() {
           <div className="flex-grow">
             <AnimatedRoutes />
           </div>
-          {/* <Footer /> */}
         </div>
       </ThemeProvider>
     </Router>

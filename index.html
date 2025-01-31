@@ -143,6 +143,7 @@
 
     <!-- Mobile/Apple Specific -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Nir Zabari" />
     <meta name="theme-color" content="#ffffff" />
@@ -162,11 +163,11 @@
       http-equiv="Content-Security-Policy"
       content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' https: data:;
         font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
-        connect-src 'self' https:;
+        connect-src 'self' https: https://www.google-analytics.com;
         media-src 'self';
         object-src 'none';
         frame-src 'self';

@@ -1,33 +1,45 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+    GA_MEASUREMENT_ID?: string;
+  }
+}
 
 // Initialize Google Analytics
-export const initGA = (measurementId: string) => {
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: any[]) {
-    window.dataLayer.push(args);
+export const initGA = async (measurementId: string) => {
+  if (typeof window !== "undefined" && !window.gtag) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
+    }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", measurementId);
   }
-  gtag("js", new Date());
-  gtag("config", measurementId);
-
-  // Add gtag to window
-  window.gtag = gtag;
 };
 
-// Hook to track page views
-export const usePageTracking = () => {
-  const location = useLocation();
+export const trackPageView = (url: string) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("config", "G-TJFXRCV9CW", {
+      page_path: url,
+    });
+  }
+};
 
-  useEffect(() => {
-    if (typeof window.gtag !== "undefined") {
-      window.gtag("event", "page_view", {
-        page_path: location.pathname + location.search,
-      });
-    }
-  }, [location]);
+export const trackEvent = (
+  category: string,
+  action: string,
+  label?: string,
+  value?: number
+) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    });
+  }
 };

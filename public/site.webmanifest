@@ -1,0 +1,16 @@
+{
+  "name": "Nir Zabari",
+  "short_name": "Nir",
+  "description": "Nir Zabari's Personal Website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0B1221",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
