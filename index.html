@@ -7,8 +7,46 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no"
     />
 
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/src/main.tsx" as="script" type="module" />
+    <link
+      rel="preload"
+      href="/images/portraits/portrait_nir.png"
+      as="image"
+      fetchpriority="high"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+
+    <!-- Async load non-critical resources -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <!-- Handle GitHub Pages SPA routing -->
-    <script type="text/javascript">
+    <script type="text/javascript" defer>
       // Single Page Apps for GitHub Pages
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
@@ -88,22 +126,30 @@
           transform: rotate(360deg);
         }
       }
+      /* Add font-display swap for better font loading */
+      @font-face {
+        font-family: "Your Font";
+        font-display: swap;
+      }
     </style>
 
     <!-- Primary Meta Tags -->
-    <title>Nir Zabari</title>
+    <title>Nir Zabari - Computer Vision Researcher & AI Engineer</title>
     <meta
       name="description"
-      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+      content="Nir Zabari is a Computer Vision Researcher at Lightricks, specializing in generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
     />
     <meta name="author" content="Nir Zabari" />
     <meta
       name="keywords"
-      content="Nir Zabari,computer vision, machine learning, AI research, generative models, Lightricks, Microsoft, Mobileye, Hebrew University"
+      content="Nir Zabari, Zabari Nir, Computer Vision Researcher, AI Engineer, Machine Learning, Generative Models, Lightricks, Microsoft, Mobileye, Hebrew University"
     />
 
     <!-- Robots and Indexing -->
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
     <meta name="googlebot" content="index, follow" />
     <meta
       name="google-site-verification"
@@ -115,11 +161,11 @@
     <meta property="og:url" content="https://nirzabari.github.io/" />
     <meta
       property="og:title"
-      content="Nir Zabari | Researcher & Computer Vision Engineer"
+      content="Nir Zabari - Computer Vision Researcher & AI Engineer"
     />
     <meta
       property="og:description"
-      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+      content="Nir Zabari is a Computer Vision Researcher at Lightricks, specializing in generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
     />
     <meta property="og:image" content="/images/portraits/portrait_nir.png" />
     <meta property="og:site_name" content="Nir Zabari" />
@@ -130,11 +176,11 @@
     <meta property="twitter:url" content="https://nirzabari.github.io/" />
     <meta
       property="twitter:title"
-      content="Nir Zabari | Researcher & Computer Vision Engineer"
+      content="Nir Zabari - Computer Vision Researcher & AI Engineer"
     />
     <meta
       property="twitter:description"
-      content="Computer vision researcher at Lightricks, focusing on generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
+      content="Nir Zabari is a Computer Vision Researcher at Lightricks, specializing in generative models. Previously at Microsoft and Mobileye. M.Sc. graduate from Hebrew University."
     />
     <meta
       property="twitter:image"
@@ -151,21 +197,14 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nirzabari.github.io/" />
 
-    <!-- Preconnect to External Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-
-    <!-- Preload Critical Images -->
-    <link rel="preload" as="image" href="/images/portraits/portrait_nir.png" />
-
     <!-- Security -->
     <meta
       http-equiv="Content-Security-Policy"
       content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' https: data:;
+        img-src 'self' https: data: https://www.google-analytics.com;
         font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
         connect-src 'self' https: https://www.google-analytics.com;
         media-src 'self';
@@ -202,7 +241,8 @@
       content="#0f172a"
     />
 
-    <script type="module" src="./src/main.tsx"></script>
+    <!-- Defer non-critical JavaScript -->
+    <script type="module" src="./src/main.tsx" defer></script>
   </head>
   <body role="document">
     <div

@@ -1,4 +1,11 @@
+# www.robotstxt.org/
+# Allow crawling of all content
 User-agent: *
 Allow: /
+Allow: /research
+Allow: /photography
+Allow: /personal
+Disallow: /?/
 
+# Sitemap
 Sitemap: https://nirzabari.github.io/sitemap.xml 
