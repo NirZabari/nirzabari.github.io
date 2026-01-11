@@ -16,7 +16,7 @@ def generate_photo_list():
             photos.append({
                 "id": str(i),
                 "url": f"/images/photography/{filename}",
-                "title": "Photo taken by Canon R10"
+                "title": "© Nir Zabari"
             })
 
     # Generate TypeScript code

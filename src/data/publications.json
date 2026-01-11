@@ -1,6 +1,23 @@
 {
   "publications": [
     {
+      "id": "8",
+      "title": "LTX-2: Efficient Joint Audio-Visual Foundation Model",
+      "summary": "An open-source 19B-parameter model for generating high-quality, temporally synchronized audiovisual content. Features an asymmetric dual-stream transformer with bidirectional audio-video cross-attention, achieving state-of-the-art quality among open-source systems.",
+      "authors": "Yoav HaCohen, Benny Brazowski, Nisan Chiprut, ..., **Nir Zabari**, et al.",
+      "venue": "arXiv",
+      "image": "/images/research/ltx-2.jpg",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2601.03233",
+      "youtube": "https://www.youtube.com/watch?v=8fWAJXZJbRA",
+      "tags": [
+        "Video Generation",
+        "Audio Generation",
+        "Diffusion Models",
+        "Multimodal"
+      ]
+    },
+    {
       "id": "7",
       "title": "LTX-Video: Real-Time Video Latent Diffusion",
       "summary": "LTX-Video is a transformer-based latent diffusion model for real-time video generation, producing 5 seconds of 24 fps video at 768x512 resolution in 2 seconds on an Nvidia H100 GPU.",
@@ -13,7 +30,7 @@
     {
       "id": "6",
       "title": "Diffusing Colors: Image Colorization with Text-Guided Diffusion",
-      "summary": "A text guided diffusion model for image colorization, trained with cold-diffusion in SD latent space.",
+      "summary": "A text-guided diffusion model for image colorization, trained with cold-diffusion in SD latent space.",
       "authors": "**Nir Zabari**, Aharon Azulay, Alexey Gorkor, Tavi Halperin, Ohad Fried",
       "venue": "SIGGRAPH Asia",
       "image": "/images/research/diffcolor1.jpg",

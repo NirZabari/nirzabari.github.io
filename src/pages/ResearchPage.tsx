@@ -14,6 +14,7 @@ interface Publication {
   image: string;
   year: number;
   url?: string;
+  youtube?: string;
   tags?: string[];
 }
 
@@ -38,9 +39,16 @@ const PublicationCard: React.FC<{
     threshold: 0.1,
   });
 
-  const handleClick = () => {
+  const handleImageClick = () => {
+    const link = publication.youtube || publication.url;
+    if (link) {
+      window.open(link, '_blank', 'noopener noreferrer');
+    }
+  };
+
+  const handleTitleClick = () => {
     if (publication.url) {
-      window.open(publication.url, "_blank", "noopener noreferrer");
+      window.open(publication.url, '_blank', 'noopener noreferrer');
     }
   };
 
@@ -55,7 +63,7 @@ const PublicationCard: React.FC<{
       <div className="flex flex-col md:flex-row">
         <div
           className="md:w-1/3 h-48 md:h-auto relative cursor-pointer"
-          onClick={handleClick}
+          onClick={handleImageClick}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-transparent mix-blend-overlay" />
           <img
@@ -67,11 +75,11 @@ const PublicationCard: React.FC<{
         <div className="flex-1 p-6 md:p-8">
           <div className="flex justify-between items-start gap-4">
             <h3
-              onClick={handleClick}
+              onClick={handleTitleClick}
               className={`text-xl font-semibold text-gray-900 dark:text-white transition-colors duration-300 ${
                 publication.url
-                  ? "hover:text-primary-700 dark:hover:text-primary-400 cursor-pointer"
-                  : ""
+                  ? 'hover:text-primary-700 dark:hover:text-primary-400 cursor-pointer'
+                  : ''
               }`}
             >
               {publication.title}

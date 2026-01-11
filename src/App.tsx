@@ -22,6 +22,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     ReactGA.send({ hitType: "pageview", page: location.pathname });
   }, [location]);
 

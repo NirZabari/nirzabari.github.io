@@ -5,33 +5,73 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getPhotos, Photo, photographyContent } from "../content/photography";
 
 // You can change this seed to get different photo orders
-// const PHOTO_SEED = 6333333;
-const PHOTO_SEED = 11111111;
+const PHOTO_SEED = 6333333;
+// const PHOTO_SEED = 11111111;
+
+// Cache aspect ratios in localStorage
+const ASPECT_CACHE_KEY = 'photo-aspect-ratios';
+
+const getAspectCache = (): Record<string, number> => {
+  try {
+    return JSON.parse(localStorage.getItem(ASPECT_CACHE_KEY) || '{}');
+  } catch {
+    return {};
+  }
+};
+
+const setAspectCache = (cache: Record<string, number>) => {
+  localStorage.setItem(ASPECT_CACHE_KEY, JSON.stringify(cache));
+};
 
 const PhotoGrid: React.FC<{
   photos: Photo[];
   onPhotoClick: (index: number) => void;
 }> = ({ photos, onPhotoClick }) => {
+  const [aspectRatios, setAspectRatios] =
+    useState<Record<string, number>>(getAspectCache);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+  const handleImageLoad = (photo: Photo, img: HTMLImageElement) => {
+    const ratio = img.naturalWidth / img.naturalHeight;
+    setAspectRatios((prev) => {
+      const updated = { ...prev, [photo.id]: ratio };
+      setAspectCache(updated);
+      return updated;
+    });
+    setLoadedImages((prev) => new Set(prev).add(photo.id));
+  };
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-[1px] bg-black">
-      {photos.map((photo, index) => (
-        <motion.div
-          key={photo.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: index * 0.05 }}
-          className="relative aspect-square bg-white dark:bg-gray-900 overflow-hidden group cursor-pointer"
-          onClick={() => onPhotoClick(index)}
-        >
-          <img
-            src={photo.url}
-            alt={photo.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 border border-black pointer-events-none" />
-        </motion.div>
-      ))}
+    <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-[1px] bg-black p-[1px]">
+      {photos.map((photo, index) => {
+        const aspectRatio = aspectRatios[photo.id] || 1;
+        const isLoaded = loadedImages.has(photo.id);
+
+        return (
+          <div
+            key={photo.id}
+            className="relative overflow-hidden group cursor-pointer mb-[1px] bg-gray-900"
+            style={{ aspectRatio: aspectRatio }}
+            onClick={() => onPhotoClick(index)}
+          >
+            {/* Skeleton placeholder */}
+            {!isLoaded && (
+              <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+            )}
+            <img
+              src={photo.url}
+              alt={photo.title}
+              loading={index < 20 ? 'eager' : 'lazy'}
+              decoding="async"
+              className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${
+                isLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={(e) => handleImageLoad(photo, e.currentTarget)}
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 pointer-events-none" />
+          </div>
+        );
+      })}
     </div>
   );
 };
