@@ -7,7 +7,7 @@ export interface Photo {
 export const photographyContent = {
   title: "Photography",
   description:
-    "Photography is one of my ways of expressing myself. I enjoy freezing moments in time and sharing them with others. My current gear is Canon R10. Hope you'll enjoy this collection!",
+    "A curated selection of my photography. Current gear: Canon R6.",
 } as const;
 
 // Seeded random number generator

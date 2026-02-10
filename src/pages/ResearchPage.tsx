@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { PageTransition } from "../components/PageTransition";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import publicationsData from "../data/publications.json";
 import { researchContent } from "../content/research";
 
@@ -30,72 +28,91 @@ const formatAuthors = (authors: string) => {
   );
 };
 
-const PublicationCard: React.FC<{
-  publication: Publication;
-  index: number;
-}> = ({ publication, index }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const handleImageClick = () => {
-    const link = publication.youtube || publication.url;
-    if (link) {
-      window.open(link, '_blank', 'noopener noreferrer');
-    }
-  };
-
-  const handleTitleClick = () => {
-    if (publication.url) {
-      window.open(publication.url, '_blank', 'noopener noreferrer');
-    }
-  };
-
+const PublicationRow: React.FC<{ publication: Publication }> = ({
+  publication,
+}) => {
+  const primaryLink = publication.url || publication.youtube;
+  const hasLinks = Boolean(publication.url || publication.youtube);
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white dark:bg-surface-dark rounded-xl shadow-lg dark:shadow-soft-dark transition-all duration-300 hover:shadow-xl border border-gray-100 dark:border-gray-800"
-    >
-      <div className="flex flex-col md:flex-row">
-        <div
-          className="md:w-1/3 h-48 md:h-auto relative cursor-pointer"
-          onClick={handleImageClick}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-transparent mix-blend-overlay" />
-          <img
-            src={publication.image}
-            alt={publication.title}
-            className="absolute inset-0 w-full h-full object-contain rounded-t-xl md:rounded-l-xl md:rounded-tr-none transition-transform duration-300 hover:scale-105"
-          />
+    <article className="py-8 border-b border-gray-200 dark:border-gray-800 -mx-2 px-2 rounded-lg transition-colors hover:bg-gray-50/60 dark:hover:bg-white/5">
+      <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
+        <div className="w-full sm:w-56 shrink-0">
+          <a
+            href={primaryLink || "#"}
+            target={primaryLink ? "_blank" : undefined}
+            rel={primaryLink ? "noopener noreferrer" : undefined}
+            aria-label={primaryLink ? `Open ${publication.title}` : undefined}
+            className={primaryLink ? "block" : "block pointer-events-none"}
+          >
+            <div className="w-full aspect-[16/10] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-white/5">
+              <img
+                src={publication.image}
+                alt={publication.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </a>
         </div>
-        <div className="flex-1 p-6 md:p-8">
-          <div className="flex justify-between items-start gap-4">
-            <h3
-              onClick={handleTitleClick}
-              className={`text-xl font-semibold text-gray-900 dark:text-white transition-colors duration-300 ${
-                publication.url
-                  ? 'hover:text-primary-700 dark:hover:text-primary-400 cursor-pointer'
-                  : ''
-              }`}
-            >
-              {publication.title}
-            </h3>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white tracking-tight">
+            {primaryLink ? (
+              <a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
+              >
+                {publication.title}
+              </a>
+            ) : (
+              publication.title
+            )}
+          </h3>
+
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-medium text-gray-800 dark:text-gray-300">
+              {publication.venue} {publication.year}
+            </span>
+            <span aria-hidden="true" className="text-gray-300 dark:text-gray-700">
+              •
+            </span>
+            <span className="min-w-0">{formatAuthors(publication.authors)}</span>
           </div>
-          <p className="mt-3 text-sm font-medium text-primary-700 dark:text-primary-400">
-            {publication.venue} {publication.year}
+
+          <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            {publication.summary}
           </p>
-          <div className="mt-4">
-            <p className="text-sm text-gray-800 dark:text-gray-300 leading-relaxed">
-              {formatAuthors(publication.authors)}
-            </p>
-          </div>
         </div>
+
+        {hasLinks && (
+          <div className="shrink-0 flex items-center gap-3 sm:pt-1">
+            {publication.url && (
+              <a
+                href={publication.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+              >
+                Paper
+              </a>
+            )}
+            {publication.youtube && (
+              <a
+                href={publication.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+              >
+                Video
+              </a>
+            )}
+          </div>
+        )}
       </div>
-    </motion.div>
+    </article>
   );
 };
 
@@ -108,7 +125,7 @@ export const ResearchPage: React.FC = () => {
 
   return (
     <PageTransition>
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-background-dark dark:to-background-dark">
+      <main className="min-h-screen bg-background-light dark:bg-background-dark">
         <div className="mx-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-4">
@@ -123,12 +140,11 @@ export const ResearchPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               Selected Publications
             </h2>
-            <div className="space-y-6">
-              {publications.map((publication, index) => (
-                <PublicationCard
+            <div className="divide-y divide-transparent">
+              {publications.map((publication) => (
+                <PublicationRow
                   key={publication.id}
                   publication={publication}
-                  index={index}
                 />
               ))}
             </div>

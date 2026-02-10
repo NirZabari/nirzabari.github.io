@@ -1,7 +1,7 @@
 export const aboutContent = {
   title: 'Personal',
   introduction:
-    'I grew up in Jerusalem, Israel. When I’m not working, I love diving into creative projects, exploring new adventures, and chasing that adrenaline rush.',
+    'I grew up in Jerusalem, Israel. Outside of work, I enjoy creative projects and spending time outdoors.',
 
   personalImages: [
     {
@@ -23,7 +23,7 @@ export const aboutContent = {
       icon: 'camera',
       title: 'Photography',
       description:
-        "I've been interested in photography since childhood, starting with mobile. Current gear: Canon R10.",
+        "I've been interested in photography since childhood, starting with mobile. Current gear: Canon R6.",
       image:
         '/images/photography/427545796_1455006901747649_3277885628214365443_n_18217641394283016.jpg',
     },
@@ -38,21 +38,21 @@ export const aboutContent = {
       icon: 'crown',
       title: 'Chess',
       description:
-        "I was trained by a GM and achieved a peak blitz rating of 1700 within a year. Let's play!",
+        'I was trained by a GM and reached a peak blitz rating of 1700 within a year.',
       image: '/images/about/chess_2.jpg',
     },
     {
       icon: 'snowflake',
       title: 'Extreme Sports',
       description:
-        'Enjoy adrenaline. Kitesurfing, skydiving, snowboarding, skiing, and more.',
+        'Kitesurfing, skydiving, snowboarding, skiing, and more.',
       image: '/images/about/skydive_dubai.jpg',
     },
     {
       icon: 'cat',
       title: 'Cats',
       description:
-        'I have two Bengal cats, Blitz and Luna, who are my catpilots.',
+        'I have two Bengal cats, Blitz and Luna.',
       image: '/images/about/blitz.jpg',
     },
   ],

@@ -13,13 +13,6 @@
   body {
     @apply antialiased bg-background-light dark:bg-[#0F0A1F] text-gray-900 dark:text-gray-100 min-w-[320px];
   }
-
-  /* Smooth theme transitions */
-  *,
-  *::before,
-  *::after {
-    @apply transition-colors duration-200;
-  }
 }
 
 /* ... (keep existing animations and scrollbar styles) */
@@ -44,40 +37,15 @@
   );
 }
 
-/* Wave animation for text */
-@keyframes wave {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  30% {
-    transform: translateY(-12px) rotate(0deg);
-  }
-  60% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
-
-.wavy-text span {
-  display: inline-block;
-  animation-fill-mode: both;
-}
-
-.wavy-text:hover span {
-  animation: wave 0.5s ease-in-out;
-}
-
 /* Container max-width override */
 @layer utilities {
   .container {
-    @apply max-w-[2000px];
+    @apply max-w-7xl;
   }
 
   /* Custom text colors */
   .text-primary {
-    @apply text-violet-600 dark:text-violet-400;
+    @apply text-primary-600 dark:text-primary-400;
   }
 
   /* Custom hover effects */
@@ -86,6 +54,6 @@
   }
 
   .hover-glow:hover {
-    @apply scale-105 brightness-110;
+    @apply brightness-110;
   }
 }

@@ -13,7 +13,7 @@ export const Research: React.FC = () => {
     <section id="research" className="relative py-16 sm:py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center gap-4 mb-8 sm:mb-12">
-          <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600" />
+          <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 text-primary-600" />
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
             {researchContent.title}
           </h2>
@@ -28,7 +28,7 @@ export const Research: React.FC = () => {
             </p>
             <Link
               to={researchContent.sections.currentWork.link.href}
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
               aria-label={researchContent.sections.currentWork.link.ariaLabel}
             >
               {researchContent.sections.currentWork.link.text}
@@ -46,7 +46,7 @@ export const Research: React.FC = () => {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-primary-600 transition-colors"
                     aria-label={link.ariaLabel}
                   >
                     <Icon className="w-5 h-5" />

@@ -71,7 +71,7 @@ export const NotFoundPage: React.FC = () => {
             className="cursor-pointer relative"
           >
             <motion.h1 
-              className="text-9xl font-bold text-blue-600 mb-4 relative z-10"
+              className="text-9xl font-bold text-primary-600 mb-4 relative z-10"
               variants={glitchVariants}
               whileHover="visible"
             >
@@ -100,7 +100,7 @@ export const NotFoundPage: React.FC = () => {
                 opacity: secretMessage ? 1 : 0,
                 y: secretMessage ? 0 : 10
               }}
-              className="absolute w-full text-sm text-blue-600 font-medium"
+              className="absolute w-full text-sm text-primary-600 font-medium"
             >
               {secretMessage}
             </motion.p>
@@ -118,8 +118,8 @@ export const NotFoundPage: React.FC = () => {
                 to={to}
                 className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300 group"
               >
-                <Icon className="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" />
-                <span className="text-sm font-medium text-gray-600 group-hover:text-blue-600 transition-colors">
+                <Icon className="w-6 h-6 text-gray-400 group-hover:text-primary-600 transition-colors" />
+                <span className="text-sm font-medium text-gray-600 group-hover:text-primary-600 transition-colors">
                   {label}
                 </span>
               </Link>

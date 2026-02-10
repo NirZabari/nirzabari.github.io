@@ -10,26 +10,6 @@ const iconMap = {
   linkedin: Linkedin,
 } as const;
 
-const WavyText: React.FC<{ text: string }> = ({ text }) => {
-  return (
-    <span className="wavy-text inline-block">
-      {text.split("").map((char, index) => (
-        <span
-          key={index}
-          className="relative inline-block"
-          style={{
-            animation: `wave 0.5s ease-in-out ${index * 0.03}s`,
-            animationFillMode: "both",
-            marginRight: char === " " ? "0.3em" : "0.03em",
-          }}
-        >
-          {char}
-        </span>
-      ))}
-    </span>
-  );
-};
-
 export const Hero: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -88,11 +68,13 @@ export const Hero: React.FC = () => {
           <div className="text-center md:text-left flex-grow max-w-2xl">
             <div className="space-y-2">
               <h1 className="relative inline-block text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <WavyText text={heroContent.greeting} />
+                {heroContent.greeting}
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-blue-100/90 font-light tracking-wide">
-                {heroContent.title}
-              </p>
+              {heroContent.title ? (
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-blue-100/90 font-light tracking-wide">
+                  {heroContent.title}
+                </p>
+              ) : null}
             </div>
             <div className="text-gray-800 dark:text-gray-200 space-y-6 mt-4">
               {heroContent.description.map((paragraph, index) => (
@@ -110,7 +92,7 @@ export const Hero: React.FC = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative hover-glow"
+                    className="group relative"
                     aria-label={label}
                   >
                     <div className="p-3 rounded-full bg-gray-100 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:bg-gray-200 dark:group-hover:bg-white/10">

@@ -1,8 +1,8 @@
 export const heroContent = {
-  greeting: "Hi! I'm Nir.",
-  title: '',
+  greeting: "Nir Zabari",
+  title: "",
   description: [
-    'I am a Researcher on the Model Foundations team at Lightricks, where I helped develop LTX-Video, a state-of-the-art video generative model. I work on video and image generation, large-scale data curation, and shipping GenAI features to millions of users. Previously, I was a Data Scientist at Microsoft, working on recommendation systems and LLM distillation. Earlier, at Mobileye, I designed and initiated ME-Search, which became a company-wide tool for image retrieval, and led image segmentation models deployment.',
+    'I am a Researcher on the Model Foundations team at Lightricks, where I work on the development of LTX-Video. I build video and image generation systems, develop large-scale data curation pipelines, and ship GenAI features used by millions of users. Previously, I was a Data Scientist at Microsoft (recommendation systems and LLM distillation). Earlier, at Mobileye, I designed and initiated ME-Search, which became a company-wide tool for image retrieval, and led image segmentation model deployments.',
     'I hold an M.Sc. in Computer Science (summa cum laude) from the Hebrew University of Jerusalem, where my research focused on deep learning for embryo implantation assessment and open-vocabulary semantic segmentation.',
   ],
   socialLinks: [

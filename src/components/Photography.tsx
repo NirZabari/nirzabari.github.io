@@ -13,7 +13,7 @@ export const Photography: React.FC = () => {
     <section id="photography" className="relative py-16 sm:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center gap-4 mb-8 sm:mb-12">
-          <Camera className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600" />
+          <Camera className="w-7 h-7 sm:w-8 sm:h-8 text-primary-600" />
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Photography</h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -33,7 +33,7 @@ export const Photography: React.FC = () => {
             className="group bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
             aria-label="View my complete photography portfolio"
           >
-            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
               View Full Portfolio
             </h3>
             <p className="text-gray-600 mt-2">Explore my complete collection of photographs and visual stories.</p>
@@ -43,7 +43,7 @@ export const Photography: React.FC = () => {
             <div className="space-y-3">
               <Link 
                 to="/research" 
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                className="flex items-center gap-2 text-gray-600 hover:text-primary-600 transition-colors"
                 aria-label="Learn about my research work"
               >
                 <BookOpen className="w-5 h-5" />
@@ -51,7 +51,7 @@ export const Photography: React.FC = () => {
               </Link>
               <Link 
                 to="/personal" 
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                className="flex items-center gap-2 text-gray-600 hover:text-primary-600 transition-colors"
                 aria-label="Learn more about my background and interests"
               >
                 <User className="w-5 h-5" />

@@ -63,7 +63,7 @@ const PhotoGrid: React.FC<{
               alt={photo.title}
               loading={index < 20 ? 'eager' : 'lazy'}
               decoding="async"
-              className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
                 isLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={(e) => handleImageLoad(photo, e.currentTarget)}
@@ -130,7 +130,7 @@ const Lightbox: React.FC<LightboxProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm"
+      className="fixed inset-0 z-50 bg-black/90"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -138,7 +138,7 @@ const Lightbox: React.FC<LightboxProps> = ({
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-50 p-2 rounded-full bg-white/10 text-white/90 backdrop-blur-sm transition-colors hover:bg-white/20"
+          className="absolute right-4 top-4 z-50 p-2 rounded-full bg-white/10 text-white/90 transition-colors hover:bg-white/20"
           aria-label="Close lightbox"
         >
           <X className="w-6 h-6" />
@@ -147,10 +147,10 @@ const Lightbox: React.FC<LightboxProps> = ({
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             className="relative w-full h-full flex items-center justify-center"
           >
             {isLoading && (
@@ -169,7 +169,7 @@ const Lightbox: React.FC<LightboxProps> = ({
 
         <button
           onClick={onPrevious}
-          className="absolute left-4 p-2 rounded-full bg-white/10 text-white/90 backdrop-blur-sm transition-colors hover:bg-white/20"
+          className="absolute left-4 p-2 rounded-full bg-white/10 text-white/90 transition-colors hover:bg-white/20"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-6 h-6" />
@@ -177,7 +177,7 @@ const Lightbox: React.FC<LightboxProps> = ({
 
         <button
           onClick={onNext}
-          className="absolute right-4 p-2 rounded-full bg-white/10 text-white/90 backdrop-blur-sm transition-colors hover:bg-white/20"
+          className="absolute right-4 p-2 rounded-full bg-white/10 text-white/90 transition-colors hover:bg-white/20"
           aria-label="Next image"
         >
           <ChevronRight className="w-6 h-6" />
@@ -226,7 +226,7 @@ export const PhotographyPage: React.FC = () => {
 
   return (
     <PageTransition>
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-background-dark dark:to-background-dark">
+      <main className="min-h-screen bg-background-light dark:bg-background-dark">
         <div className="mx-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-4">
@@ -237,7 +237,7 @@ export const PhotographyPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="max-w-[2000px] mx-auto">
+          <div className="max-w-[2000px] mx-auto pb-24">
             <PhotoGrid photos={photos} onPhotoClick={setSelectedIndex} />
           </div>
         </div>
