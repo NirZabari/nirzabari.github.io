@@ -98,13 +98,6 @@ export const BlogPage: React.FC = () => {
     <PageTransition>
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-background-dark dark:to-background-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-4">
-            Blog
-          </h1>
-          <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300 mb-12">
-            Technical posts, thoughts, and tutorials.
-          </p>
-
           {loading ? (
             <div className="text-center py-12">
               <p className="text-gray-600 dark:text-gray-400">Loading posts...</p>

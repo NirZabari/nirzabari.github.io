@@ -33,6 +33,29 @@ function rehypeExternalLinks() {
   };
 }
 
+function rehypePrioritizePostImages() {
+  return (tree: Root) => {
+    let isFirstImage = true;
+
+    visit(tree, 'element', (node: Element) => {
+      if (node.tagName !== 'img' || !node.properties) {
+        return;
+      }
+
+      if (isFirstImage) {
+        node.properties.loading = 'eager';
+        node.properties.fetchpriority = 'high';
+        node.properties.decoding = 'sync';
+        isFirstImage = false;
+        return;
+      }
+
+      node.properties.loading = 'lazy';
+      node.properties.decoding = 'async';
+    });
+  };
+}
+
 export async function markdownToHtml(markdown: string): Promise<string> {
   const result = await unified()
     .use(remarkParse)
@@ -64,6 +87,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(rehypeEnhanceCodeBlocks)
     .use(rehypeKatex)
     .use(rehypeExternalLinks)
+    .use(rehypePrioritizePostImages)
     .use(rehypeStringify)
     .process(markdown);
 
