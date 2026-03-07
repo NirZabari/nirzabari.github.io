@@ -8,6 +8,7 @@ interface NavigationProps {
 }
 
 const navLinks = [
+  { name: 'Blog', path: '/blog' },
   { name: 'Research', path: '/research' },
   { name: 'Photography', path: '/photography' },
   { name: 'Personal', path: '/personal' },

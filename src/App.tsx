@@ -12,6 +12,8 @@ import { Home } from "./pages/Home";
 import { ResearchPage } from "./pages/ResearchPage";
 import { PhotographyPage } from "./pages/PhotographyPage";
 import { AboutPage } from "./pages/AboutPage";
+import { BlogPage } from "./pages/BlogPage";
+import { BlogPostPage } from "./pages/BlogPostPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import ReactGA from "react-ga4";
 import { Analytics } from "./components/Analytics";
@@ -33,6 +35,8 @@ const AnimatedRoutes = () => {
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/photography" element={<PhotographyPage />} />
         <Route path="/personal" element={<AboutPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AnimatePresence>
