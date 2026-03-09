@@ -44,7 +44,7 @@ while :; do cat PROMPT.md | claude-code --dangerously-skip-permissions; done
 
 That's it. [Geoffrey Huntley](https://ghuntley.com) created the technique and ran it to build entire programming languages. At a Y Combinator hackathon, a team used it to [ship 6 repos overnight](https://github.com/repomirrorhq/repomirror/blob/main/repomirror.md). No orchestrator, no tool registry, no safety layer; just a model in a loop, reading a prompt file, writing code, and looping back. Every time something went wrong, he tuned the prompt, ["like tuning a guitar."](https://www.theregister.com/2026/01/27/ralph_wiggum_claude_loops/) When the agent drifted too far, he'd `git reset --hard` and start again.
 
-One key insight in Huntley's approach is that the loop-back is everything. You want to program in ways where the agent can loop itself back for evaluation. This could be as simple as instructing it to add logging, or asking it to compile the application and inspect the output. The obsession with finding the perfect prompt is a trap - there is no perfect prompt. What matters is the feedback loop.
+One key insight in Huntley's approach is that the feedback loop is everything. You want to program in ways where the agent can evaluate itself. This could be as simple as instructing it to add logging, or asking it to compile the application and inspect the output. The obsession with finding the perfect prompt is a trap - there is no perfect prompt.
 Huntley also found that the agent has an inherent bias toward minimal and placeholder implementations. His solution was blunt:
 
 > "DO NOT IMPLEMENT PLACEHOLDER OR SIMPLE IMPLEMENTATIONS. WE WANT FULL IMPLEMENTATIONS. DO IT OR I WILL YELL AT YOU."
@@ -138,7 +138,7 @@ The ecosystem is converging on shared boundaries: MCP for tool connectivity, AGE
 
 ## The LLM Provider Contract
 
-Before diving into harness architecture, it's worth separating "model capability" from "product engineering." A reader should walk away knowing what to demand from any LLM provider - OpenAI, Anthropic, Google, or any other provider.
+Before diving into harness architecture, it's worth separating "model capability" from "product engineering." A reader should walk away knowing what to demand from any LLM provider - OpenAI, Anthropic, Google, and others.
 
 ### Streaming as Events, Not Just Text
 
@@ -162,19 +162,19 @@ In the [**Anthropic Messages API**](https://docs.anthropic.com/en/api/messages),
 
 In the [**OpenAI Responses API**](https://platform.openai.com/docs/api-reference/responses), this begins with `response.output_item.added`, which emits an in-progress function call item.
 
-**Phase 2 - "Arguments are streaming in."** The model generates the JSON arguments token by token: first `{"path": "/src/m`, then `ain.py"}`. You see the arguments building up incrementally in the UI, which makes the whole interaction feel more responsive.
+**Phase 2 - "Arguments are streaming in."** The model generates the JSON arguments token by token: first `{"path": "src/m`, then `ain.py"}`. You see the arguments building up incrementally in the UI, which makes the whole interaction feel more responsive.
 
 In **Anthropic**, these arrive as `content_block_delta` events with `type: "input_json_delta"`:
 
 ```json
-{ "type": "content_block_delta", "index": 1, "delta": { "type": "input_json_delta", "partial_json": "{\"path\": \"/src/m" } }
+{ "type": "content_block_delta", "index": 1, "delta": { "type": "input_json_delta", "partial_json": "{\"path\": \"src/m" } }
 { "type": "content_block_delta", "index": 1, "delta": { "type": "input_json_delta", "partial_json": "ain.py\"}" } }
 ```
 
 In **OpenAI**, these are `response.function_call_arguments.delta` events:
 
 ```json
-{ "type": "response.function_call_arguments.delta", "item_id": "fc_001", "delta": "{\"path\": \"/src/m" }
+{ "type": "response.function_call_arguments.delta", "item_id": "fc_001", "delta": "{\"path\": \"src/m" }
 ```
 
 **Phase 3 - "Done, execute it."** The tool call is fully formed. Arguments are finalized, the harness can now actually execute the tool.
@@ -193,13 +193,13 @@ In practice, robust agent harnesses benefit from tool calls that are addressable
 
 ### Multi-Turn Thread State
 
-Agents aren't "one request." They're threads that grow until they hit a context window, then require compaction or truncation strategies. This is one of the ways each coding agent product differs. For instance, Claude Code suggests cleaning the context after plan mode. Context management is still one of the biggest issues that defines a good harness - context rot is a common problem, and working with a larger context (today mostly up to 1M tokens) increases your costs.
+Agents aren't "one request." They're threads that grow until they hit a context window, then require compaction or truncation strategies. This is one of the ways each coding agent product differs. For instance, Claude Code suggests cleaning the context after plan mode. Context management is still one of the biggest issues that defines a good harness - context rot is a common problem, and larger windows (today mostly up to 1M tokens) increase your costs.
 
 As OpenAI puts it: "generally, the cost of sampling the model dominates the cost of network traffic, making sampling the primary target of our efficiency efforts. This is why prompt caching is so important."
 
 ### Portability
 
-Codex explicitly notes its endpoint is configurable and can work with any endpoint implementing the Responses API. This leads naturally to vendor-neutral standards like Open Responses (launched on January 2026), which defines items, semantic streaming, and tool invocation patterns for provider-agnostic agent APIs.
+Codex explicitly notes its endpoint is configurable and can work with any endpoint implementing the Responses API. This leads naturally to vendor-neutral standards like Open Responses (launched in January 2026), which defines items, semantic streaming, and tool invocation patterns for provider-agnostic agent APIs.
 
 ## Harness Deep Dive: Codex vs OpenCode
 
